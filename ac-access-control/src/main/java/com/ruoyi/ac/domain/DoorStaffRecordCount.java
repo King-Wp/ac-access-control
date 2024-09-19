@@ -1,4 +1,4 @@
-package com.gate.system.domain;
+package com.ruoyi.ac.domain;
 
 import lombok.Data;
 

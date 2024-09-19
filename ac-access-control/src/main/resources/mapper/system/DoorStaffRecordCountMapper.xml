@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.ac.mapper.DoorStaffRecordCountMapper">
+
+	<resultMap type="com.ruoyi.ac.domain.DoorStaffRecordCount" id="DoorStaffRecordCountResult">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="realname" property="realname"/>
+		<result column="floor_num" property="floorNum"/>
+		<result column="device_id" property="deviceId"/>
+		<result column="device_name" property="deviceName"/>
+		<result column="project_name" property="projectName"/>
+		<result column="build_name" property="buildName"/>
+		<result column="project_type" property="projectType"/>
+		<result column="out_id" property="outId"/>
+		<result column="user_id" property="userId"/>
+		<result column="project_id" property="projectId"/>
+		<result column="opendoor_type" property="opendoorType"/>
+		<result column="ic_id" property="icId"/>
+		<result column="content" property="content"/>
+		<result column="face_picture" property="facePicture"/>
+		<result column="role_id" property="roleId"/>
+		<result column="gate_type" property="gateType"/>
+		<result column="visit_time" property="visitTime"/>
+		<result column="is_deal" property="isDeal"/>
+		<result column="deal_num" property="dealNum"/>
+		<result column="deal_result" property="dealResult"/>
+		<result column="is_ignore" property="isIgnore"/>
+		<result column="is_del" property="isDel"/>
+		<result column="user_name" property="userName"/>
+		<result column="start_date" property="startDate"/>
+		<result column="end_date" property="endDate"/>
+		<result column="floor_name" property="floorName"/>
+		<result column="room_name" property="roomName"/>
+		<result column="build_id" property="buildId"/>
+		<result column="floor_id" property="floorId"/>
+		<result column="room_id" property="roomId"/>
+		<result column="mobile" property="mobile"/>
+		<result column="body_temperature" property="bodyTemperature"/>
+		<result column="is_normal" property="isNormal"/>
+		<result column="is_fail" property="isFail"/>
+		<result column="branch_id" property="branchId"/>
+		<result column="gender" property="gender"/>
+		<result column="nation" property="nation"/>
+		<result column="id_card" property="idCard"/>
+		<result column="mj_card_from" property="mjCardFrom"/>
+		<result column="rfid_card" property="rfidCard"/>
+		<result column="similarity" property="similarity"/>
+		<result column="reg_pic_info" property="regPicInfo"/>
+		<result column="snap_pic_info" property="snapPicInfo"/>
+		<result column="remote_open_door" property="remoteOpenDoor"/>
+		<result column="birthday" property="birthday"/>
+		<result column="customize_id" property="customizeId"/>
+		<result column="database_id" property="databaseId"/>
+	</resultMap>
+
+	<insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO door_staff_record_count
+        (name, realname, floor_num, device_id, device_name, project_name, build_name, project_type, out_id, user_id,
+        project_id, opendoor_type, ic_id, content, face_picture, role_id, gate_type, visit_time, is_deal, deal_num,
+        deal_result, is_ignore, is_del, user_name, start_date, end_date, floor_name, room_name, build_id, floor_id,
+        room_id, mobile, body_temperature, is_normal, is_fail, branch_id, gender, nation, id_card, mj_card_from,
+        rfid_card, similarity, reg_pic_info, snap_pic_info, remote_open_door, birthday, customize_id, database_id)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.name}, #{item.realname}, #{item.floorNum}, #{item.deviceId}, #{item.deviceName},
+            #{item.projectName}, #{item.buildName}, #{item.projectType}, #{item.outId}, #{item.userId},
+            #{item.projectId}, #{item.opendoorType}, #{item.icId}, #{item.content}, #{item.facePicture}, #{item.roleId},
+            #{item.gateType}, #{item.visitTime}, #{item.isDeal}, #{item.dealNum}, #{item.dealResult}, #{item.isIgnore},
+            #{item.isDel}, #{item.userName}, #{item.startDate}, #{item.endDate}, #{item.floorName}, #{item.roomName},
+            #{item.buildId}, #{item.floorId}, #{item.roomId}, #{item.mobile}, #{item.bodyTemperature}, #{item.isNormal},
+            #{item.isFail}, #{item.branchId}, #{item.gender}, #{item.nation}, #{item.idCard}, #{item.mjCardFrom},
+            #{item.rfidCard}, #{item.similarity}, #{item.regPicInfo}, #{item.snapPicInfo}, #{item.remoteOpenDoor},
+            #{item.birthday}, #{item.customizeId}, #{item.databaseId})
+        </foreach>
+    </insert>
+
+</mapper>
