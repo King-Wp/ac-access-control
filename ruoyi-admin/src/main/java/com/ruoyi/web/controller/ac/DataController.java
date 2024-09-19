@@ -2,6 +2,8 @@ package com.ruoyi.web.controller.ac;
 
 import com.ruoyi.ac.domain.DoorStaffRecordCount;
 import com.ruoyi.ac.service.IAccessControlDataImplService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +26,8 @@ public class DataController {
         this.iAccessControlDataImplService = iAccessControlDataImplService;
     }
 
-    @RequestMapping("/batchInsert")
-    public int batchInsert(List<DoorStaffRecordCount> doorStaffRecordCounts){
+    @PostMapping("/batchInsert")
+    public int batchInsert(@RequestBody List<DoorStaffRecordCount> doorStaffRecordCounts){
         return iAccessControlDataImplService.batchInsert(doorStaffRecordCounts);
     }
 
