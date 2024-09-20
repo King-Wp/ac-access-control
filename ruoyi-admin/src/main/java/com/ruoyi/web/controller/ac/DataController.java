@@ -2,6 +2,9 @@ package com.ruoyi.web.controller.ac;
 
 import com.ruoyi.ac.domain.DoorStaffRecordCount;
 import com.ruoyi.ac.service.IAccessControlDataImplService;
+import com.ruoyi.common.constant.HttpStatus;
+import com.ruoyi.common.core.domain.AjaxResult;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +30,14 @@ public class DataController {
     }
 
     @PostMapping("/batchInsert")
-    public int batchInsert(@RequestBody List<DoorStaffRecordCount> doorStaffRecordCounts){
-        return iAccessControlDataImplService.batchInsert(doorStaffRecordCounts);
+    public AjaxResult batchInsert(@RequestBody List<DoorStaffRecordCount> doorStaffRecordCounts){
+        if (CollectionUtils.isNotEmpty(doorStaffRecordCounts)){
+            int i = iAccessControlDataImplService.batchInsert(doorStaffRecordCounts);
+            if(i>0){
+                return AjaxResult.success();
+            }
+        }
+        return AjaxResult.error(HttpStatus.NOT_MODIFIED,"写入数据异常");
     }
 
 }
